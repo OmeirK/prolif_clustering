@@ -1,4 +1,5 @@
 import json
+import tqdm
 import pickle
 import argparse
 import numpy as np
@@ -123,7 +124,7 @@ def main():
     n_target = len(target_l)
     distance_mtx = np.zeros((n_target, n_target))
 
-    for i, target in enumerate(target_l):
+    for i, target in enumerate(tqdm.tqdm(target_l)):
         fp1 = fp_data['targets'][target]
         for j in range(0, i+1):
             target2 = target_l[j]
@@ -132,14 +133,14 @@ def main():
             tanimoto = calc_tanimoto(fp1, fp2)
             distance = (1 - tanimoto)
 
-            print(i, target, j, target2, tanimoto)
+            #print(i, target, j, target2, tanimoto)
 
             distance_mtx[i][j] = distance
             distance_mtx[j][i] = distance
 
     clusters = Butina.ClusterData(data=distance_mtx, nPts=n_target, distThresh=args.clust_threshold, isDistData=True)
     
-    print(clusters)
+    print(f'{len(clusters)} clusters identified.')
     # Save target names for each cluster
     out_data = {}
     for i, clust in enumerate(clusters):
