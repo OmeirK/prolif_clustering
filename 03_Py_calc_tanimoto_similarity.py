@@ -140,6 +140,10 @@ def main():
 
     clusters = Butina.ClusterData(data=distance_mtx, nPts=n_target, distThresh=args.clust_threshold, isDistData=True)
     
+    # Sort by size
+    clusters = list(clusters)
+    clusters.sort(key=len, reverse=True)
+
     print(f'{len(clusters)} clusters identified.')
     # Save target names for each cluster
     out_data = {}
