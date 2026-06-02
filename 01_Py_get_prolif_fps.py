@@ -21,6 +21,9 @@ def main():
         print(target)
         t_path = f'{args.fragalysis_dir}/{target}/'
 
+        if os.path.isdir(t_path) == False:
+            continue
+
         rec_pdb = f'{t_path}/{target}_delig-desolv.pdb'
         lig_sdf = f'{t_path}/{target}_ligand.sdf'
 
