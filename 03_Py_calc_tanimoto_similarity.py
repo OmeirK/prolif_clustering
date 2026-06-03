@@ -12,7 +12,7 @@ parser.add_argument('--fp_pkl', '-i', help='pkl file with dict for targets+finge
 parser.add_argument('--clust_threshold', '-c', help='Distance threshold to use for clustering by ProLIF tanimoto similarity (default = 0.5)', default=0.5, type=float)
 
 parser.add_argument('--filter_f', '-f', help='(Optional) provide a filter file to only consider a subset of targets. Should contain a "complex_name" column, and a "fragment_screen" column to denote which targets are fragments. If this file is provided, fragment-lead similarity will be calculated.', default=None)
-parser.add_argument('--outfile', '-o', help='(Optional) Name of output file for frag-lead tanimoto (default = json_frag-lead_tanimoto.json)', default='json_frag-lead_tanimoto.json')
+parser.add_argument('--outfile', '-o', help='(Optional) Name of output file for frag-lead tanimoto (default = json_prolif_clusters.json)', default='json_prolif_clusters.json')
 
 args = parser.parse_args()
 
